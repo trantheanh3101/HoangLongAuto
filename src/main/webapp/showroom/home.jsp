@@ -19,6 +19,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="showroom?action=list">Danh sách sản phâm</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Loại xe</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -27,7 +30,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Liên hệ</a>
+                    <a class="nav-link" href="">Liên hệ</a>
                 </li>
             </ul>
             <form class="d-flex">
