@@ -36,4 +36,9 @@ public class CarService implements ICarService {
         return carRepository.removeCar(id);
     }
 
+    @Override
+    public Car findById(long id) {
+        return carRepository.findById(id);
+    }
+
 }

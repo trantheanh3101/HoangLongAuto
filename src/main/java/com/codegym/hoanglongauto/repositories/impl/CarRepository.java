@@ -108,4 +108,34 @@ public class CarRepository implements ICarRepository {
         return result;
     }
 
+    @Override
+    public Car findById(long id) {
+        Car car = null;
+        try {
+            PreparedStatement preparedStatement = BaseRepository.getConnection().
+                    prepareStatement("select * from manager.car where car.id = ?");
+            preparedStatement.setLong(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                id = resultSet.getInt("id");
+                String make = resultSet.getString("make");
+                String models = resultSet.getString("model");
+                int year = resultSet.getInt("year");
+                double price = resultSet.getDouble("price");
+                String color = resultSet.getString("color");
+                String engineType = resultSet.getString("engine_type");
+                int horsepower = resultSet.getInt("horsepower");
+                int torque = resultSet.getInt("torque");
+                int settingCapacity = resultSet.getInt("seating_capacity");
+                String description = resultSet.getString("description");
+                String img = resultSet.getString("img");
+                int quantity = resultSet.getInt("quantity");
+                int used_car = resultSet.getInt("used_car");
+                car = new Car(color, description, engineType, horsepower, id, img, make, models, price, settingCapacity, torque, year, quantity, used_car);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return car;
+    }
 }

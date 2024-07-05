@@ -10,4 +10,7 @@ public interface ICarService {
     List<Car> searchByModel(String model);
 
     Boolean removeCar(int id);
+
+    Car findById(long id);
+
 }

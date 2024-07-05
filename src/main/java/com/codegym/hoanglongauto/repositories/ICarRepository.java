@@ -11,4 +11,6 @@ public interface ICarRepository {
     List<Car> searchByModel(String model);
 
     Boolean removeCar(int id);
+
+    Car findById(long id);
 }
