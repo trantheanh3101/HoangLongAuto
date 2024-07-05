@@ -27,9 +27,24 @@ public class ShowRoomController extends HttpServlet {
             case "list":
                 showList(req, resp);
                 break;
+            case "show_car":
+                showCar(req, resp);
+                break;
             default:
                 showHomeForm(req, resp);
                 break;
+        }
+    }
+    // Long làm phần này.
+    private void showCar(HttpServletRequest req, HttpServletResponse resp) {
+        long id = Long.parseLong(req.getParameter("id"));
+        Car car = carService.findById(id);
+        req.setAttribute("car", car);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("showroom/show_car.jsp");
+        try {
+            requestDispatcher.forward(req, resp);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 

@@ -48,7 +48,8 @@
         <thead>
         <tr>
             <th>Số thứ tự</th>
-            <th>Tên Xe</th>
+            <th>Hãng Sản Xuất</th>
+            <th>Mẫu Xe</th>
             <th>Giá Bán</th>
             <th>Màu Sơn</th>
             <th>Tồn Kho</th>
@@ -60,44 +61,11 @@
         <c:forEach var="car" items="${cars}" varStatus="status">
             <tr>
                 <td>${status.count}</td>
-                <td>${car.make} ${car.model}</td>
-                ${car.model}
+                <td>${car.make}</td>
+                <td>${car.model}</td>
                 <td>${car.price}</td>
                 <td>${car.color}</td>
                 <td>${car.quantity}</td>
-                <td>
-                </td>
-                <td>
-                    <a href="/student?action=edit&id=${car.id}" class="btn btn-warning">edit</a>
-                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal${car.id}">
-                        Xóa
-                    </button>
-                    <div class="modal fade" id="deleteModal${car.id}" tabindex="-1"
-                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Xóa học sinh</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Bạn có muốn xóa sản phẩm có tên là ${car.make} ${car.model}?
-                                    <p style="color: red">Hành động này không thể hoàn tác!!!!!</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                    <form action="showroom?action=delete" method="post">
-                                        <button type="submit" class="btn btn-primary">Xác nhận</button>
-                                        <input type="hidden" name="id" value="${car.id}">
-                                    </form>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="/showroom?action=show_car&id=${car.id}" class="btn btn-warning">Xem Chi Tiết</a>
-                </td>
             </tr>
         </c:forEach>
         </tbody>
