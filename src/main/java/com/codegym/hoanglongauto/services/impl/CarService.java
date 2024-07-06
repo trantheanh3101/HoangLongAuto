@@ -41,4 +41,9 @@ public class CarService implements ICarService {
         return carRepository.findById(id);
     }
 
+    @Override
+    public void update(Long id, Car car) {
+        carRepository.editById (id,car);
+    }
+
 }

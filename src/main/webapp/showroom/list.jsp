@@ -68,7 +68,7 @@
                 <td>
                 </td>
                 <td>
-                    <a href="/student?action=edit&id=${car.id}" class="btn btn-warning">edit</a>
+                    <a href="/showroom?action=edit&id=${car.id}" class="btn btn-warning">edit</a>
                     <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal${car.id}">
                         Xóa
                     </button>
@@ -104,4 +104,7 @@
     </table>
 </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </html>

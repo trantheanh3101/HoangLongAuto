@@ -13,4 +13,6 @@ public interface ICarRepository {
     Boolean removeCar(int id);
 
     Car findById(long id);
+
+    void editById(Long id, Car car);
 }
