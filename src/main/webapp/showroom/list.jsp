@@ -24,7 +24,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >
                     <option selected>Chức năng</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
