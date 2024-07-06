@@ -147,4 +147,21 @@ public class CarRepository implements ICarRepository {
         }
         return car;
     }
+
+    @Override
+    public void editById(Long id, Car car) {
+        try{
+            PreparedStatement preparedStatement = BaseRepository.getConnection().
+                    prepareStatement("update manager.car set make = ?, model =?,price =?,color =?, quantity=? where id=?;");
+            preparedStatement.setString(1, car.getMake());
+            preparedStatement.setString(2, car.getModel());
+            preparedStatement.setDouble(3, car.getPrice());
+            preparedStatement.setString(4,car.getColor());
+            preparedStatement.setInt(5, car.getQuantity());
+            preparedStatement.setLong(6, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }

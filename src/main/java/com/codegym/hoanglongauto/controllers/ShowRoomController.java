@@ -30,11 +30,35 @@ public class ShowRoomController extends HttpServlet {
             case "show_car":
                 showCar(req, resp);
                 break;
+            case "edit":
+                showEditForm(req,resp);
+                break;
             default:
                 showHomeForm(req, resp);
                 break;
         }
     }
+
+    private void showEditForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Long id = Long.parseLong(req.getParameter("id"));
+        Car car = carService.findById(id);
+
+        RequestDispatcher dispatcher;
+        if (car == null){
+            dispatcher =req.getRequestDispatcher("/showroom/error-404.jsp");
+        } else {
+            req.setAttribute("car",car);
+            dispatcher = req.getRequestDispatcher("/showroom/edit.jsp");
+        }
+        try {
+            dispatcher.forward(req, resp);
+        } catch ( ServletException e){
+            e.printStackTrace();
+        } catch (IOException e  ){
+            e.printStackTrace();
+        }
+    }
+
     // Long làm phần này.
     private void showCar(HttpServletRequest req, HttpServletResponse resp) {
         long id = Long.parseLong(req.getParameter("id"));
@@ -75,7 +99,42 @@ public class ShowRoomController extends HttpServlet {
             case "delete":
                 deleteCar(req, resp);
                 break;
+            case "edit":
+                updateCar(req,resp);
+                break;
         }
+    }
+
+    private void updateCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
+        Long id = Long.parseLong(req.getParameter("id"));
+        String name = req.getParameter("name");
+        String model = req.getParameter("model");
+        Double price = Double.parseDouble(req.getParameter("price"));
+        String color = req.getParameter("color");
+        int quantity = Integer.parseInt(req.getParameter("quantity"));
+        RequestDispatcher dispatcher;
+        Car car = carService.findById(id);
+        if( car == null ){
+            dispatcher = req.getRequestDispatcher("/showroom/error-404.jsp");
+        } else {
+            car.setMake(name);
+            car.setModel(model);
+            car.setPrice(price);
+            car.setColor(color);
+            car.setQuantity(quantity);
+            carService.update(id,car);
+            req.setAttribute("car", car);
+            req.setAttribute("message", "Successful");
+            dispatcher = req.getRequestDispatcher("/showroom/edit.jsp");
+        }
+        try {
+            dispatcher.forward(req, resp);
+        } catch (ServletException e){
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
     private void deleteCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

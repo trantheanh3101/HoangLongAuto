@@ -13,4 +13,5 @@ public interface ICarService {
 
     Car findById(long id);
 
+    void update(Long id, Car car);
 }
