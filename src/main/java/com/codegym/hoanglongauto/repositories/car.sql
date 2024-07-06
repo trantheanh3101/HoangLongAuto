@@ -44,13 +44,16 @@ CREATE TABLE oder (
                        FOREIGN KEY (car_id) REFERENCES Car(id),
                        FOREIGN KEY (customer_id) REFERENCES Customer(id),
                        FOREIGN KEY (employee_id) REFERENCES Employee(id)
-
 );
 
 INSERT INTO Car (make, model, year, price, color, engine_type, horsepower, torque, seating_capacity, description, img, quantity, used_car)
 VALUES
     ('Toyota', 'Camry', 2020, 24500.00, 'Blue', 'V6', 301, 267, 5, 'Comfortable midsize sedan', 'img/camry.jpg', 10, 0),
-    ('Honda', 'Civic', 2019, 22000.00, 'Red', 'I4', 158, 138, 5, 'Reliable compact car', 'img/civic.jpg', 15, 1),
+    ('Honda', 'Civic', 2019, 22000.00, 'Red', 'I4', 158, 138, 5, 'Solus GT là phiên bản giới hạn chỉ 25 chiếc dành riêng cho đường đua.
+
+Xe đua một chỗ ngồi này sử dụng động cơ V8 tăng áp kép 3,8 hoặc 4,0 lít điển hình của McLaren, lấy sức mạnh từ động cơ V10 5,2 lít hút khí tự nhiên do Judd Power chế tạo.
+
+Động cơ này sản sinh công suất 829 mã lực với mô-men xoắn 479 lb-ft, xe có thể đạt tốc độ 62 dặm/giờ (100 km/h) trong 2,5 giây.', '<img src="/img/xe1.png">', 15, 1),
     ('Ford', 'Mustang', 2021, 55000.00, 'Black', 'V8', 450, 410, 4, 'Iconic American sports car', 'img/mustang.jpg', 5, 0),
     ('Chevrolet', 'Malibu', 2020, 24000.00, 'White', 'I4', 160, 184, 5, 'Midsize sedan with good fuel economy', 'img/malibu.jpg', 8, 1),
     ('BMW', 'X5', 2022, 60000.00, 'Silver', 'V6', 335, 330, 7, 'Luxury SUV with advanced features', 'img/x5.jpg', 7, 0),
@@ -99,3 +102,4 @@ VALUES
     (8, 9, 6, '2023-09-27'),
     (6, 4, 10, '2023-10-05'),
     (10, 10, 8, '2023-11-12');
+

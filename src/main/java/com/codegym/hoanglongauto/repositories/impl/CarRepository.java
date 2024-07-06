@@ -99,9 +99,18 @@ public class CarRepository implements ICarRepository {
         boolean result;
         try {
             PreparedStatement preparedStatement = BaseRepository.getConnection().
-                    prepareStatement("delete from manager.car where id = ?");
+                    prepareStatement("delete from manager.oder where oder.car_id = ?");
             preparedStatement.setInt(1, id);
             result = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+                PreparedStatement preparedStatement = BaseRepository.getConnection().
+                        prepareStatement("delete from manager.car where id = ?");
+                preparedStatement.setInt(1, id);
+                result = preparedStatement.executeUpdate() > 0;
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -13,6 +13,36 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body{
+            margin: 0;
+        }
+        #header{
+            background: rosybrown;
+            height: 100px;
+            width: 100%;
+        }
+        #main{
+            height: 300px;
+            width: 65%;
+            float: left;
+        }
+        #sidebar{
+            margin-top: 150px;
+            margin-left: 20px;
+            padding: 50px;
+            background: #ffffff;
+            height: 300px;
+            width: 30%;
+            float: left;
+        }
+        #footer{
+            background: lemonchiffon;
+            height: 100px;
+            width: 100%;
+            clear: both; /*ko cho các thẻ khác xuất hiện 2 bên của thẻ footer*/
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -40,36 +70,41 @@
     </div>
 </nav>
 <div class="container">
-    <button class="btn btn-primary mt-4" onclick="window.location.href='/student?action=create'">Thêm</button>
     <c:if test='${requestScope["message"] != null}'>
         <span class="message">${requestScope["message"]}</span>
     </c:if>
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th>Số thứ tự</th>
-            <th>Hãng Sản Xuất</th>
-            <th>Mẫu Xe</th>
-            <th>Giá Bán</th>
-            <th>Màu Sơn</th>
-            <th>Tồn Kho</th>
-            <th>Chức năng</th>
-        </tr>
-        </thead>
-        <tbody>
-        <%--        for(Student student : students)--%>
-        <c:forEach var="car" items="${cars}" varStatus="status">
+    <div id="main">
+        <table class="table table-hover">
             <tr>
-                <td>${status.count}</td>
-                <td>${car.make}</td>
-                <td>${car.model}</td>
+                <th>${car.img}</th>
+            </tr>
+            <tr>
+                <th>${car.description}</th>
+            </tr>
+        </table>
+    </div>
+    <div id="sidebar">
+        <table class="table table-hover">
+            <h1>Thông tin xe</h1>
+            <tr>
+                <th>Tên Xe</th>
+                <td>${car.make} ${car.model}</td>
+            </tr>
+            <tr>
+                <th>Giá Bán</th>
                 <td>${car.price}</td>
+            </tr>
+            <tr>
+                <th>Màu Sơn</th>
                 <td>${car.color}</td>
+            </tr>
+            <tr>
+                <th>Tồn Kho</th>
                 <td>${car.quantity}</td>
             </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+        </table>
+        </table>
+    </div>
 </div>
 </body>
 </html>
