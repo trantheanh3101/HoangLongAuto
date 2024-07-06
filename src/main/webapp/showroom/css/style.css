@@ -1,0 +1,46 @@
+.card .bg-image img {
+    height: 200px; /* Đặt chiều cao mong muốn */
+    width: 100%; /* Tự động điều chỉnh chiều rộng */
+    object-fit: cover; /* Đảm bảo hình ảnh không bị méo */
+}
+
+.navbar-nav {
+    display: flex;
+    width: 100%;
+}
+
+.navbar-nav .nav-item {
+    /*flex: 1;*/
+    width: 10%;
+    text-align: center;
+}
+
+
+.navbar-nav .nav-item .nav-link {
+    position: relative;
+}
+
+.navbar-nav .nav-item .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* Vị trí của hiệu ứng hover so với link */
+    left: 0;
+    width: 0;
+    height: 3px; /* Chiều cao của hiệu ứng hover */
+    background-color: yellow; /* Màu sắc của hiệu ứng hover */
+    transition: width 0.3s; /* Thời gian chuyển đổi của hiệu ứng */
+}
+
+.navbar-nav .nav-item .nav-link:hover::before {
+    width: 100%; /* Kích thước khi hover */
+}
+
+.navbar {
+    position: relative;
+    overflow: visible;
+}
+
+.padding-large {
+    padding-top: 7em;
+    padding-bottom: 7em;
+}
