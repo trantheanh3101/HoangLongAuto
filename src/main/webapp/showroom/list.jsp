@@ -5,7 +5,7 @@
   Time: 09:30
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"  pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -40,7 +40,7 @@
     </div>
 </nav>
 <div class="container">
-    <button class="btn btn-primary mt-4" onclick="window.location.href='/student?action=create'">Thêm</button>
+    <button class="btn btn-primary mt-4" onclick="window.location.href='/showroom?action=create'">Thêm</button>
     <c:if test='${requestScope["message"] != null}'>
         <span class="message">${requestScope["message"]}</span>
     </c:if>
@@ -57,7 +57,6 @@
         </tr>
         </thead>
         <tbody>
-        <%--        for(Student student : students)--%>
         <c:forEach var="car" items="${cars}" varStatus="status">
             <tr>
                 <td>${status.count}</td>
@@ -69,30 +68,26 @@
                 <td>
                 </td>
                 <td>
-                    <a href="/student?action=edit&id=${car.id}" class="btn btn-warning">edit</a>
-                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal${car.id}">
-                        Xóa
-                    </button>
-                    <div class="modal fade" id="deleteModal${car.id}" tabindex="-1"
-                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+<%--                    <button class="btn btn-warning" onclick="window.location.href ='/showroom?action=edit&id=${car.id}'">Sua</button>--%>
+                    <a href="/showroom?action=edit&id=${car.id}" class="btn btn-warning">edit</a>
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal${car.id}">Xóa</button>
+                    <div class="modal fade" id="deleteModal${car.id}" tabindex="-1"  aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Xóa học sinh</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                    <h5 class="modal-title" id="exampleModalLabel">Xóa san pham </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Bạn có muốn xóa sản phẩm có tên là ${car.make} ${car.model}?
+                                    Bạn có muốn xóa sản phẩm có tên là ${car.make}?
                                     <p style="color: red">Hành động này không thể hoàn tác!!!!!</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                    <form action="showroom?action=delete" method="post">
+                                    <form action="/showroom?action=delete" method="post">
                                         <button type="submit" class="btn btn-primary">Xác nhận</button>
                                         <input type="hidden" name="id" value="${car.id}">
                                     </form>
-
                                 </div>
                             </div>
                         </div>
@@ -105,4 +100,7 @@
     </table>
 </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </html>

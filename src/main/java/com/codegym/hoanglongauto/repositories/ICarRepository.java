@@ -10,5 +10,11 @@ public interface ICarRepository {
 
     List<Car> searchByModel(String model);
 
-    Boolean removeCar(int id);
+    Boolean removeCar(long id);
+
+    Car findById(Long id);
+
+    void editById(Long id, Car car);
+
+    void save(Car car);
 }

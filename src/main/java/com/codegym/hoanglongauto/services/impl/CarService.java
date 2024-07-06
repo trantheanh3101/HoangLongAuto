@@ -32,8 +32,24 @@ public class CarService implements ICarService {
     }
 
     @Override
-    public Boolean removeCar(int id) {
+    public Boolean removeCar(Long id) {
         return carRepository.removeCar(id);
     }
+
+    @Override
+    public Car findById(Long id) {
+        return  carRepository.findById(id);
+    }
+
+    @Override
+    public void update(Long id, Car car) {
+        carRepository.editById (id,car);
+    }
+
+    @Override
+    public void save(Car car) {
+        carRepository.save(car);
+    }
+
 
 }

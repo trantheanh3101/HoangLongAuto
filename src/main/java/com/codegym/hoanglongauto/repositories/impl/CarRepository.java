@@ -95,17 +95,78 @@ public class CarRepository implements ICarRepository {
     }
 
     @Override
-    public Boolean removeCar(int id) {
+    public Boolean removeCar(long id) {
         boolean result;
         try {
             PreparedStatement preparedStatement = BaseRepository.getConnection().
+                    prepareStatement("delete from manager.oder where id = ?");
+            preparedStatement.setLong(1, id);
+            result = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try{
+            PreparedStatement preparedStatement = BaseRepository.getConnection().
                     prepareStatement("delete from manager.car where id = ?");
-            preparedStatement.setInt(1, id);
+            preparedStatement.setLong(1, id);
             result = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return result;
+    }
+
+    @Override
+    public Car findById(Long id) {
+        for (Car car :this.findAll()){
+            if(car.getId() == id){
+                return car;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void editById(Long id, Car car) {
+        try{
+            PreparedStatement preparedStatement = BaseRepository.getConnection().
+                    prepareStatement("update manager.car set make = ?, model =?,price =?,color =?, quantity=? where id=?;");
+            preparedStatement.setString(1, car.getMake());
+            preparedStatement.setString(2, car.getModel());
+            preparedStatement.setDouble(3, car.getPrice());
+            preparedStatement.setString(4,car.getColor());
+            preparedStatement.setInt(5, car.getQuantity());
+            preparedStatement.setLong(6, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void save(Car car) {
+        try {
+            PreparedStatement preparedStatement = BaseRepository.getConnection().
+                    prepareStatement("insert into car(make,model,year,price,color,engine_type,horsepower,torque,seating_capacity,description,img,quantity,used_car) values (?,?,?,?,?,?,?,?,?,?,?,?,?);");
+
+            preparedStatement.setString(1, car.getMake());
+            preparedStatement.setString(2, car.getModel());
+            preparedStatement.setInt(3, car.getYear());
+            preparedStatement.setDouble(4, car.getPrice());
+            preparedStatement.setString(5, car.getColor());
+            preparedStatement.setString(6, car.getEngineType());
+            preparedStatement.setInt(7, car.getHorsePower());
+            preparedStatement.setInt(8, car.getTorque());
+            preparedStatement.setInt(9, car.getSettingCapacity());
+            preparedStatement.setString(10, car.getDescription());
+            preparedStatement.setString(11, car.getImg());
+            preparedStatement.setInt(12, car.getQuantity());
+            preparedStatement.setInt(13, car.getUsed_car());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
