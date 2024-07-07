@@ -15,4 +15,6 @@ public interface ICarRepository {
     Car findById(long id);
 
     void editById(Long id, Car car);
+
+    void save(Car car);
 }

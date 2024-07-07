@@ -164,4 +164,30 @@ public class CarRepository implements ICarRepository {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void save(Car car) {
+        try {
+            PreparedStatement preparedStatement = BaseRepository.getConnection().
+                    prepareStatement("insert into car(make,model,year,price,color,engine_type,horsepower,torque,seating_capacity,description,img,quantity,used_car) values (?,?,?,?,?,?,?,?,?,?,?,?,?);");
+
+            preparedStatement.setString(1, car.getMake());
+            preparedStatement.setString(2, car.getModel());
+            preparedStatement.setInt(3, car.getYear());
+            preparedStatement.setDouble(4, car.getPrice());
+            preparedStatement.setString(5, car.getColor());
+            preparedStatement.setString(6, car.getEngineType());
+            preparedStatement.setInt(7, car.getHorsePower());
+            preparedStatement.setInt(8, car.getTorque());
+            preparedStatement.setInt(9, car.getSettingCapacity());
+            preparedStatement.setString(10, car.getDescription());
+            preparedStatement.setString(11, car.getImg());
+            preparedStatement.setInt(12, car.getQuantity());
+            preparedStatement.setInt(13, car.getUsed_car());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

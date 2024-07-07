@@ -46,4 +46,9 @@ public class CarService implements ICarService {
         carRepository.editById (id,car);
     }
 
+    @Override
+    public void save(Car car) {
+        carRepository.save(car);
+    }
+
 }
