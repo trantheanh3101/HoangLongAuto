@@ -40,7 +40,7 @@
     </div>
 </nav>
 <div class="container">
-    <button class="btn btn-primary mt-4" onclick="window.location.href='/student?action=create'">Thêm</button>
+    <button class="btn btn-primary mt-4" onclick="window.location.href='/showroom?action=create'">Thêm</button>
     <c:if test='${requestScope["message"] != null}'>
         <span class="message">${requestScope["message"]}</span>
     </c:if>

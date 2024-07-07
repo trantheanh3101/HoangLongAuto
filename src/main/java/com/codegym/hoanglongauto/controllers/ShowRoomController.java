@@ -33,6 +33,11 @@ public class ShowRoomController extends HttpServlet {
             case "edit":
                 showEditForm(req,resp);
                 break;
+            case "create":
+                List<Car> cars = carService.findAll();
+                req.setAttribute("cars", cars);
+                req.getRequestDispatcher("/showroom/create.jsp").forward(req,resp);
+                break;
             default:
                 showHomeForm(req, resp);
                 break;
@@ -92,6 +97,7 @@ public class ShowRoomController extends HttpServlet {
         }
         switch (action) {
             case "create":
+                createCar(req,resp);
                 break;
             case "search":
                 searchByModel(req, resp);
@@ -103,6 +109,28 @@ public class ShowRoomController extends HttpServlet {
                 updateCar(req,resp);
                 break;
         }
+    }
+
+    private void createCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
+        String model = req.getParameter("model");
+        int year = Integer.parseInt(req.getParameter("year"));
+        float price = Float.parseFloat(req.getParameter("price"));
+        String color = req.getParameter("color");
+        String engineType =  req.getParameter("engineType");
+        int horsePower = Integer.parseInt(req.getParameter("horsePower"));
+        int torque = Integer.parseInt(req.getParameter("torque"));
+        int seating = Integer.parseInt(req.getParameter("seating"));
+        String description = req.getParameter("description");
+        String img = req.getParameter("img");
+        int quantity = Integer.parseInt(req.getParameter("quantity"));
+        String usedCarParam = req.getParameter("used_car");
+        int usedCar = Integer.parseInt(usedCarParam);
+        Car car = new Car(color,description,engineType,horsePower,img,name,model,price,seating,torque,year,quantity,usedCar);
+        carService.save(car);
+        List<Car> cars = carService.findAll();
+        req.setAttribute("cars", cars);
+        req.getRequestDispatcher("/showroom/list.jsp").forward(req, resp);
     }
 
     private void updateCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
@@ -141,7 +169,10 @@ public class ShowRoomController extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("id"));
         Boolean isDeleted = carService.removeCar(id);
         if (isDeleted) {
-            resp.sendRedirect("/showroom/list");
+//            resp.sendRedirect("/showroom/list");
+            List<Car> cars = carService.findAll();
+            req.setAttribute("cars", cars);
+            req.getRequestDispatcher("/showroom/list.jsp").forward(req, resp);
         } else {
             req.setAttribute("message", "sản phẩm ko tồn tại");
             List<Car> cars = carService.findAll();

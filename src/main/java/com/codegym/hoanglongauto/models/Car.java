@@ -32,6 +32,21 @@ public class Car {
         this.quantity = quantity;
         this.used_car = used_car;
     }
+    public Car(String color, String description, String engineType, int horsePower, String img, String make, String model, double price, int settingCapacity, int torque, int year, int quantity, int used_car) {
+        this.color = color;
+        this.description = description;
+        this.engineType = engineType;
+        this.horsePower = horsePower;
+        this.img = img;
+        this.make = make;
+        this.model = model;
+        this.price = price;
+        this.settingCapacity = settingCapacity;
+        this.torque = torque;
+        this.year = year;
+        this.quantity = quantity;
+        this.used_car = used_car;
+    }
 
     public int getQuantity() {
         return quantity;
