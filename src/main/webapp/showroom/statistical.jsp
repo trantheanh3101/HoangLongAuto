@@ -42,17 +42,22 @@
 <div class="container">
     <form method="post">
         <div class="mb-3">
-            <label for="startDate" class="form-label">Ngày Bắt Đầu</label>
-            <input type="date" class="form-control" id="startDate" name="startDate" value="<%= request.getParameter("startDate") %>">
+            <div class="col-md-2">
+                <label for="startDate" class="form-label">Ngày Bắt Đầu</label>
+                <input type="date" class="form-control" id="startDate" name="startDate"
+                       value="<%= request.getParameter("startDate") %>">
+            </div>
+
+            <div class="col-md-2">
+                <label for="endDate" class="form-label">Ngày Kết Thúc</label>
+                <input type="date" class="form-control" id="endDate" name="endDate"
+                       value="<%= request.getParameter("endDate") %>">
+            </div>
+            <button type="submit" class="btn btn-primary">Kiểm Tra Doanh Số</button>
+            <c:if test='${requestScope["message"] != null}'>
+                <span class="message">${requestScope["message"]}</span>
+            </c:if>
         </div>
-        <div class="mb-3">
-            <label for="endDate" class="form-label">Ngày Kết Thúc</label>
-            <input type="date" class="form-control" id="endDate" name="endDate" value="<%= request.getParameter("endDate") %>">
-        </div>
-        <button type="submit" class="btn btn-primary">Kiểm Tra Doanh Số</button>
-        <c:if test='${requestScope["message"] != null}'>
-            <span class="message">${requestScope["message"]}</span>
-        </c:if>
     </form>
     <table class="table table-hover">
         <thead>
@@ -70,7 +75,7 @@
         <c:forEach var="saleDTO" items="${saleDTO}" varStatus="status">
         <tr>
             <td>${status.count}</td>
-            <td>${saleDTO.car_make}  ${saleDTO.car_model}</td>
+            <td>${saleDTO.car_make} ${saleDTO.car_model}</td>
             <td>${saleDTO.price}</td>
             <td>${saleDTO.color}</td>
             <td>${saleDTO.quantity}</td>
