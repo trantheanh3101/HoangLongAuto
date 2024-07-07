@@ -121,13 +121,13 @@
 
                 <div class="row">
                     <div class="col-lg-4 col-md-12 mb-4">
-                        <img src="${pageContext.request.contextPath}/showroom/images/BMW-x3.jpg" class="img-fluid" alt="" />
+                        <img src="${pageContext.request.contextPath}/showroom/images/BMW-x3.jpg" alt="BMW-x3.jpg" class="img-fluid" >
                     </div>
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <img src="${pageContext.request.contextPath}/showroom/images/EverestPlatinum.jpg" class="img-fluid" alt="" />
+                        <img src="${pageContext.request.contextPath}/showroom/images/EverestPlatinum.jpg" alt="EverestPlatinum.jpg" class="img-fluid" >
                     </div>
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <img src="h${pageContext.request.contextPath}/showroom/images/Ford_Ranger.jpg" class="img-fluid" alt="" />
+                        <img src="${pageContext.request.contextPath}/showroom/images/Ford_Ranger.jpg" alt="Ford_Ranger.jpg" class="img-fluid">
                     </div>
                 </div>
             </div>
