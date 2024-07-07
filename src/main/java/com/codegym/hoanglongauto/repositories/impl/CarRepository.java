@@ -1,5 +1,6 @@
 package com.codegym.hoanglongauto.repositories.impl;
 
+import com.codegym.hoanglongauto.dto.SaleDTO;
 import com.codegym.hoanglongauto.models.Car;
 import com.codegym.hoanglongauto.repositories.ICarRepository;
 
@@ -146,5 +147,39 @@ public class CarRepository implements ICarRepository {
             throw new RuntimeException(e);
         }
         return car;
+    }
+
+    @Override
+    public List<SaleDTO> findAllSaleDTO(String startDate, String endDate) {
+        String sql = "SELECT car.model,\n" +
+                "       car.make,\n" +
+                "       car.price,\n" +
+                "       car.color,\n" +
+                "       car.quantity,\n" +
+                "       COUNT(oder.car_id) AS SalesCount\n" +
+                "FROM car\n" +
+                "JOIN oder ON car.id = oder.car_id\n" +
+                "WHERE oder.sale_date BETWEEN ? AND ?\n" +
+                "GROUP BY car.model, car.make, car.price, car.color, car.quantity\n" +
+                "ORDER BY SalesCount DESC;\n";
+        List<SaleDTO> saleDTO = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = BaseRepository.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, startDate);
+            preparedStatement.setString(2, endDate);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String model = resultSet.getString("model");
+                String make = resultSet.getString("make");
+                String color = resultSet.getString("color");
+                int quantity = resultSet.getInt("quantity");
+                int sales = resultSet.getInt("SalesCount");
+                double price = resultSet.getDouble("price");
+                saleDTO.add(new SaleDTO(model, make, color, quantity, sales, price));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return saleDTO;
     }
 }

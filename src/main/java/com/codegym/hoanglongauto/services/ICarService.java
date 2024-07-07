@@ -1,5 +1,6 @@
 package com.codegym.hoanglongauto.services;
 
+import com.codegym.hoanglongauto.dto.SaleDTO;
 import com.codegym.hoanglongauto.models.Car;
 
 import java.util.List;
@@ -11,6 +12,8 @@ public interface ICarService {
 
     Boolean removeCar(int id);
 
-    Car findById(long id);
+    Car
+    findById(long id);
 
+    List<SaleDTO> findAllSaleDTO(String startDate, String endDate);
 }

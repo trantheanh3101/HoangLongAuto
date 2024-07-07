@@ -1,5 +1,6 @@
 package com.codegym.hoanglongauto.controllers;
 
+import com.codegym.hoanglongauto.dto.SaleDTO;
 import com.codegym.hoanglongauto.models.Car;
 import com.codegym.hoanglongauto.services.ICarService;
 import com.codegym.hoanglongauto.services.impl.CarService;
@@ -30,11 +31,24 @@ public class ShowRoomController extends HttpServlet {
             case "show_car":
                 showCar(req, resp);
                 break;
+            case "statistical":
+                showStatistical(req, resp);
+                break;
             default:
                 showHomeForm(req, resp);
                 break;
         }
     }
+
+    private void showStatistical(HttpServletRequest req, HttpServletResponse resp) {
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("showroom/statistical.jsp");
+        try {
+            requestDispatcher.forward(req, resp);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     // Long làm phần này.
     private void showCar(HttpServletRequest req, HttpServletResponse resp) {
         long id = Long.parseLong(req.getParameter("id"));
@@ -75,7 +89,24 @@ public class ShowRoomController extends HttpServlet {
             case "delete":
                 deleteCar(req, resp);
                 break;
+            case "statistical":
+                checkSales(req, resp);
         }
+    }
+
+    private void checkSales(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+        String startDate = req.getParameter("startDate");
+        String endDate = req.getParameter("endDate");
+        List<SaleDTO> saleDTO = carService.findAllSaleDTO(startDate, endDate);
+        RequestDispatcher requestDispatcher;
+        if(saleDTO.isEmpty()) {
+            req.setAttribute("message", "ko tìm thấy sản phẩm");
+            requestDispatcher = req.getRequestDispatcher("/showroom/statistical.jsp");
+        }else{
+            req.setAttribute("saleDTO", saleDTO);
+            requestDispatcher = req.getRequestDispatcher("/showroom/statistical.jsp");
+        }
+        requestDispatcher.forward(req, resp);
     }
 
     private void deleteCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

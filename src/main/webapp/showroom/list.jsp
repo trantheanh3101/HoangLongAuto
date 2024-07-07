@@ -24,9 +24,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" onchange="navigateToPage(this)">
                     <option selected>Chức năng</option>
-                    <option value="1">One</option>
+                    <option  value="1">Doanh Thu</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                 </select>
@@ -103,5 +103,12 @@
         </tbody>
     </table>
 </div>
+<script>
+    function navigateToPage(select) {
+        if (select.value === "1") {
+            window.location.href = '/showroom?action=statistical';
+        }
+    }
+</script>
 </body>
 </html>
