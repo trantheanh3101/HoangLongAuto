@@ -19,4 +19,6 @@ public interface ICarService {
     void save(Car car);
 
     List<SaleDTO> findAllSaleDTO(String startDate, String endDate);
+
+    boolean checkLogin(String account, String password);
 }

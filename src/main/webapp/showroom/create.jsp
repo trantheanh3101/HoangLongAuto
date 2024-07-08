@@ -17,7 +17,7 @@
 <body>
 <nav class="navbar navbar-expand-md navbar-light " style="background-color: #607D8B">
     <div class="container-fluid">
-        <a class="navbar-brand" href="showroom">
+        <a class="navbar-brand" href="showroom?action=showHomeAdmin">
             <img src="${pageContext.request.contextPath}/showroom/images/logoHL2.png"  alt="LOGO" width="100px" height="100px">
         </a>
         <a class="navbar-brand" href="/showroom?action=list">Quay lại </a>

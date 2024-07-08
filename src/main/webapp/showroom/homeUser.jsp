@@ -28,15 +28,52 @@
                     <a class="nav-link active" aria-current="page" href="showroom"><b>Home</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="showroom?action=list"><b>List Product</b></a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="showroom?action=about"><b>About Me</b></a>
                 </li>
             </ul>
+            <!-- Nút đăng nhập -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Admin</button>
+            <%--            <button class="btn btn-primary mt-4" onclick="window.location.href='/showroom?action=showHomeAdmin'">Admin</button>--%>
         </div>
     </div>
 </nav>
+
+<!-- Modal đăng nhập -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/showroom?action=login" method="post">
+                    <div class="form-outline mb-4">
+                        <input type="text" id="account" name="account" class="form-control" />
+                        <label class="form-label" for="account">Account</label>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="password" id="password" name="password" class="form-control" />
+                        <label class="form-label" for="password">Password</label>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col d-flex justify-content-center">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                                <label class="form-check-label" for="form1Example3"> Remember me </label>
+                            </div>
+                        </div>
+                        <div class="col text-center">
+                            <a href="#">Forgot password?</a>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <main>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark mt-3 mb-5 shadow p-2" style="background-color: #607D8B">

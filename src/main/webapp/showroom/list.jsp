@@ -18,7 +18,7 @@
 <body>
 <nav class="navbar navbar-expand-md navbar-light  " style="background-color: #607D8B">
     <div class="container-fluid">
-        <a class="navbar-brand" href="showroom">
+        <a class="navbar-brand" href="showroom?action=showHomeAdmin">
     <img src="${pageContext.request.contextPath}/showroom/images/logoHL2.png"  alt="LOGO" width="100px" height="100px">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="showroom"><b>Home</b></a>
+                        <a class="nav-link active" aria-current="page" href="showroom?action=showHomeAdmin"><b>Home</b></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="showroom?action=list"><b>List Product</b></a>
