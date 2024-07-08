@@ -17,7 +17,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/showroom?action=list">Back to car list</a>
+        <a class="navbar-brand" href="/showroom?action=list">Quay lại </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,71 +27,72 @@
 
 <div class="container">
     <form method="post">
+
         <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" name="name" required maxlength="50" minlength="3">
-        </div>
-        <div class="mb-3">
-            <label for="model" class="form-label">Model</label>
+            <label for="model" class="form-label">Tên</label>
             <input type="text" class="form-control" id="model" name="model" required maxlength="50" minlength="3">
         </div>
         <div class="mb-3">
-            <label for="year" class="form-label">Year</label>
+            <label for="name" class="form-label">Nhà sản xuất</label>
+            <input type="text" class="form-control" id="name" name="name" required maxlength="50" minlength="3">
+        </div>
+        <div class="mb-3">
+            <label for="year" class="form-label">Năm sản xuất</label>
             <input type="number" class="form-control" id="year" name="year" required>
         </div>
         <div class="mb-3">
-            <label class="form-label" for="price">Price</label>
+            <label class="form-label" for="price">Giá</label>
             <input type="number" class="form-control" id="price" name="price" required>
         </div>
         <div class="mb-3">
-            <label class="form-label" for="color">Color</label>
+            <label class="form-label" for="color">Màu sắc</label>
             <input type="text" class="form-control" id="color" name="color" required>
         </div>
         <div class="mb-3">
-            <label class="form-label" for="engineType">Engine Type</label>
+            <label class="form-label" for="engineType">Loại động cơ</label>
             <input type="text" class="form-control" id="engineType" name="engineType" required  maxlength="50" minlength="3">
         </div>
         <div class="mb-3">
-            <label for="horsePower" class="form-label">Horse power</label>
+            <label for="horsePower" class="form-label">Mã lực</label>
             <input type="number" class="form-control" id="horsePower" name="horsePower" required>
         </div>
         <div class="mb-3">
-            <label for="torque" class="form-label">Torque</label>
+            <label for="torque" class="form-label">Mô-men xoắn</label>
             <input type="number" class="form-control" id="torque" name="torque" required>
         </div>
         <div class="mb-3">
-            <label for="seating" class="form-label">Seating capacity</label>
+            <label for="seating" class="form-label">Số lượng ghế ngồi</label>
             <input type="number" class="form-control" id="seating" name="seating" required>
         </div>
         <div class="mb-3">
-            <label class="form-label" for="description">Description</label>
+            <label class="form-label" for="description">Mô tả</label>
             <input type="text" class="form-control" id="description" name="description">
         </div>
         <div class="mb-3">
-            <label class="form-label" for="img">Imagine</label>
+            <label class="form-label" for="img">Hình ảnh</label>
             <input type="text" class="form-control" id="img" name="img">
         </div>
         <div class="mb-3">
-            <label class="form-label" for="quantity">Quantity</label>
+            <label class="form-label" for="quantity">Số lượng</label>
             <input type="number" class="form-control" id="quantity" name="quantity" required>
         </div>
         <div class="mb-3">
-            <label class="form-label">Used car</label>
+            <label class="form-label">Tình trạng</label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="used_car" id="used" value="1" required>
                 <label class="form-check-label" for="used">
-                    Used
+                    Đã qua sử dụng
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="used_car" id="new" value="0" required>
                 <label class="form-check-label" for="new">
-                    New
+                    Mới
                 </label>
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Tạo mới</button>
     </form>
 </div>
 </body>
