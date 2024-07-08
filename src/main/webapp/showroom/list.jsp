@@ -29,13 +29,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="showroom">Home</a>
+                        <a class="nav-link active" aria-current="page" href="showroom"><b>Home</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="showroom?action=list">List Product</a>
+                        <a class="nav-link" href="showroom?action=list"><b>List Product</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="showroom?action=statistical">Doanh thu</a>
+                        <a class="nav-link" href="showroom?action=statistical"><b>Sales Revenue</b></a>
                     </li>
                 </ul>
             </div>
@@ -55,7 +55,7 @@
 
 <div class="container">
     <a class="btn btn-primary mt-4" onclick="window.location.href='/showroom?action=create'">
-       Thêm <i class="bi bi-plus-circle-fill"></i>
+       Product <i class="bi bi-plus-circle-fill"></i>
     </a>
     <c:if test='${requestScope["message"] != null}'>
         <span class="message">${requestScope["message"]}</span>
@@ -63,12 +63,12 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>Số thứ tự</th>
-            <th>Tên Xe</th>
-            <th>Giá Bán</th>
-            <th>Màu Sơn</th>
-            <th>Tồn Kho</th>
-            <th>Chức năng</th>
+            <th>Serial Number</th>
+            <th>Car Name</th>
+            <th>Selling Price</th>
+            <th>Paint Color</th>
+            <th>Inventory</th>
+            <th>Function</th>
         </tr>
         </thead>
         <tbody>

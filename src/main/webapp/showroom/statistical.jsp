@@ -15,9 +15,8 @@
 <body class="p-3">
 <nav class="navbar navbar-expand-md navbar-light " style="background-color: #607D8B">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="${pageContext.request.contextPath}/showroom/images/LOGO.jpg" alt="LOGO" width="250px"
-                 height="100px">
+        <a class="navbar-brand" href="showroom">
+            <img src="${pageContext.request.contextPath}/showroom/images/logoHL2.png"  alt="LOGO" width="100px" height="100px">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,13 +25,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="showroom">Home</a>
+                    <a class="nav-link active" aria-current="page" href="showroom"><b>Home</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="showroom?action=list">List Product</a>
+                    <a class="nav-link" href="showroom?action=list"><b>List Product</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Contract</a>
+                    <a class="nav-link" href=""><b>Contact</b></a>
                 </li>
             </ul>
 
@@ -43,17 +42,18 @@
     <form method="post">
         <div class="mb-3">
             <div class="col-md-2">
-                <label for="startDate" class="form-label">Ngày Bắt Đầu</label>
+                <label for="startDate" class="form-label">Start date</label>
                 <input type="date" class="form-control" id="startDate" name="startDate"
                        value="<%= request.getParameter("startDate") %>">
             </div>
 
             <div class="col-md-2">
-                <label for="endDate" class="form-label">Ngày Kết Thúc</label>
+                <label for="endDate" class="form-label">End date</label>
                 <input type="date" class="form-control" id="endDate" name="endDate"
                        value="<%= request.getParameter("endDate") %>">
             </div>
-            <button type="submit" class="btn btn-primary">Kiểm Tra Doanh Số</button>
+            <br>
+            <button type="submit" class="btn btn-primary">Check</button>
             <c:if test='${requestScope["message"] != null}'>
                 <span class="message">${requestScope["message"]}</span>
             </c:if>
@@ -62,12 +62,12 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>Số thứ tự</th>
-            <th>Tên Xe</th>
-            <th>Giá Bán</th>
-            <th>Màu Xe</th>
-            <th>Tồn Kho</th>
-            <th>Số Lượng</th>
+            <th>Serial Number</th>
+            <th>Car Name</th>
+            <th>Selling Price</th>
+            <th>Car Color</th>
+            <th>Inventory</th>
+            <th>Quantity</th>
         </tr>
         </thead>
         <tbody>
