@@ -13,13 +13,13 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-light  " style="background-color: #607D8B">
     <div class="container-fluid">
         <a class="navbar-brand" href="showroom">
-    <img src="${pageContext.request.contextPath}/showroom/images/LOGO.jpg"  alt="LOGO" width="250px" height="100px">
-
+    <img src="${pageContext.request.contextPath}/showroom/images/logoHL2.png"  alt="LOGO" width="100px" height="100px">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +43,9 @@
         <form class="d-flex" action="showroom?action=search" method="post">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
             <input type="hidden" name="action" value="search">
-            <button class="btn btn-outline-warning" type="submit">Tìm kiếm</button>
+            <a class="btn btn-outline-dark" type="submit">
+                <i class="bi bi-search"></i>
+            </a>
         </form>
     </div>
 </nav>
@@ -52,7 +54,9 @@
 
 
 <div class="container">
-    <button class="btn btn-primary mt-4" onclick="window.location.href='/showroom?action=create'">Thêm</button>
+    <a class="btn btn-primary mt-4" onclick="window.location.href='/showroom?action=create'">
+       Thêm <i class="bi bi-plus-circle-fill"></i>
+    </a>
     <c:if test='${requestScope["message"] != null}'>
         <span class="message">${requestScope["message"]}</span>
     </c:if>
@@ -77,12 +81,13 @@
                 <td>${car.color}</td>
                 <td>${car.quantity}</td>
                 <td>
-                </td>
-                <td>
-                    <a href="/showroom?action=edit&id=${car.id}" class="btn btn-warning">Sửa</a>
-                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal${car.id}">
-                        Xóa
-                    </button>
+                    <a href="/showroom?action=edit&id=${car.id}" class="btn btn-success">
+                         <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal${car.id}">
+                        <i class="bi bi-trash3"></i>
+                    </a>
+
                     <div class="modal fade" id="deleteModal${car.id}" tabindex="-1"
                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -106,7 +111,9 @@
                             </div>
                         </div>
                     </div>
-                    <a href="/showroom?action=show_car&id=${car.id}" class="btn btn-warning">Xem Chi Tiết</a>
+                    <a href="/showroom?action=show_car&id=${car.id}" class="btn btn-secondary">
+                        <i class="bi bi-arrows-angle-expand"></i>
+                    </a>
                 </td>
             </tr>
         </c:forEach>

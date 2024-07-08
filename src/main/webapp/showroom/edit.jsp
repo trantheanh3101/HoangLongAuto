@@ -13,7 +13,14 @@
     <title>Edit Car</title>
 </head>
 <body>
-<h1>Edit Car</h1>
+
+<nav class="navbar navbar-expand-md navbar-light  " style="background-color: #607D8B">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="showroom">
+            <img src="${pageContext.request.contextPath}/showroom/images/logoHL2.png"  alt="LOGO" width="100px" height="100px">
+        </a>
+        </div>
+</nav>
 <p>
     <c:if test='${requestScope["message"]!= null}'>
         <span class="message">${requestScope["message"]}</span>
