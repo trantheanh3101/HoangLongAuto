@@ -4,6 +4,7 @@ import com.codegym.hoanglongauto.dto.SaleDTO;
 import com.codegym.hoanglongauto.models.Car;
 import com.codegym.hoanglongauto.repositories.ICarRepository;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -58,7 +59,7 @@ public class CarRepository implements ICarRepository {
             PreparedStatement preparedStatement = BaseRepository.getConnection().
                     prepareStatement("INSERT INTO manager.car" +
                             "(make, model, year, price, color, engine_type, horsepower, torque, " +
-                            "setting_capacity, description, img, quantity, used_car) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                            "seating_capacity, description, img, quantity, used_car) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -225,5 +226,22 @@ public class CarRepository implements ICarRepository {
         }
         return saleDTO;
 
+    }
+
+    @Override
+    public boolean checkLogin(String account, String password) {
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = BaseRepository.getConnection().prepareStatement ("SELECT * FROM accounts WHERE account = ? AND password = ?");
+            preparedStatement.setString(1, account);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
     }
 }

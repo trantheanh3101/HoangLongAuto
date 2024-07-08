@@ -42,27 +42,39 @@ public class ShowRoomController extends HttpServlet {
             case "statistical":
                 showStatistical(req, resp);
                 break;
-            case "showHome":
-                showHome(req, resp);
+            case "showHomeAdmin":
+                showHomeFormAdmin(req, resp);
                 break;
             case "about":
                 showAbout(req,resp);
                 break;
-            default:
-                showHomeForm(req, resp);
+            default :
+                showHomeFormUser(req, resp);
                 break;
         }
+    }
+
+    private void showHomeFormUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Car> carDTO = carService.findAll();
+        req.setAttribute("carsUser", carDTO);
+        req.getRequestDispatcher("/showroom/homeUser.jsp").forward(req, resp);
+    }
+
+    private void showHomeFormAdmin(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Car> carDTO = carService.findAll();
+        req.setAttribute("cars", carDTO);
+        req.getRequestDispatcher("/showroom/homeAdmin.jsp").forward(req, resp);
     }
 
     private void showAbout(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
         req.getRequestDispatcher("/showroom/about.jsp").forward(req, resp);
     }
 
-    private void showHome(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException {
-        List<Car> cars = carService.findAll();
-        req.setAttribute("cars", cars);
-        req.getRequestDispatcher("/showroom/home.jsp").forward(req,resp);
-    }
+//    private void showHome(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException {
+//        List<Car> cars = carService.findAll();
+//        req.setAttribute("cars", cars);
+//        req.getRequestDispatcher("/showroom/homeAdmin.jsp").forward(req,resp);
+//    }
 
     private void showEditForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long id = Long.parseLong(req.getParameter("id"));
@@ -103,11 +115,6 @@ public class ShowRoomController extends HttpServlet {
         req.getRequestDispatcher("/showroom/list.jsp").forward(req, resp);
     }
 
-    private void showHomeForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Car> carDTO = carService.findAll();
-        req.setAttribute("cars", carDTO);
-        req.getRequestDispatcher("/showroom/home.jsp").forward(req, resp);
-    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -128,9 +135,22 @@ public class ShowRoomController extends HttpServlet {
             case "edit":
                 updateCar(req,resp);
                 break;
+            case "login":
+                loginAdmin(req, resp);
             case "statistical":
                 checkSales(req, resp);
                 break;
+        }
+    }
+
+    private void loginAdmin(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String account = req.getParameter("account");
+        String password = req.getParameter("password");
+        boolean result = carService.checkLogin(account, password);
+        if (result) {
+            showHomeFormAdmin(req,resp);
+        } else {
+            showHomeFormUser(req,resp);
         }
     }
 
