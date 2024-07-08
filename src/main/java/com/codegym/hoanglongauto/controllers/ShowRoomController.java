@@ -45,10 +45,17 @@ public class ShowRoomController extends HttpServlet {
             case "showHome":
                 showHome(req, resp);
                 break;
+            case "about":
+                showAbout(req,resp);
+                break;
             default:
                 showHomeForm(req, resp);
                 break;
         }
+    }
+
+    private void showAbout(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
+        req.getRequestDispatcher("/showroom/about.jsp").forward(req, resp);
     }
 
     private void showHome(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException {
