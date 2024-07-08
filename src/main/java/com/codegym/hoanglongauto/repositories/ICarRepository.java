@@ -1,5 +1,6 @@
 package com.codegym.hoanglongauto.repositories;
 
+import com.codegym.hoanglongauto.dto.SaleDTO;
 import com.codegym.hoanglongauto.models.Car;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface ICarRepository {
     void editById(Long id, Car car);
 
     void save(Car car);
+
+    List<SaleDTO> findAllSaleDTO(String startDate, String endDate);
 }
