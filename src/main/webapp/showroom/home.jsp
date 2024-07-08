@@ -70,6 +70,7 @@
             </div>
         </nav>
         <!-- Products -->
+
         <section class="padding-large">
             <div class="text-center">
                 <div class="row">
@@ -100,6 +101,7 @@
                             </div>
                         </div>
             </c:forEach>
+
             <%--                    <div class="col-lg-3 col-md-6 mb-4">--%>
             <%--                        <div class="card">--%>
             <%--                            <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">--%>

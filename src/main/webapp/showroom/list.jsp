@@ -93,18 +93,18 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Xóa học sinh</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Confirm action</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Bạn có muốn xóa sản phẩm có tên là ${car.make} ${car.model}?
-                                    <p style="color: red">Hành động này không thể hoàn tác!!!!!</p>
+                                    Delete product:   ${car.make} ${car.model}?
+                                    <p style="color: red">This action cannot be undone!!!!!</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                     <form action="showroom?action=delete" method="post">
-                                        <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                        <button type="submit" class="btn btn-primary">Yes</button>
                                         <input type="hidden" name="id" value="${car.id}">
                                     </form>
                                 </div>
