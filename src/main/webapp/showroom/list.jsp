@@ -35,7 +35,7 @@
         <form class="d-flex" action="showroom?action=search" method="post">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
             <input type="hidden" name="action" value="search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
         </form>
     </div>
 </nav>
@@ -61,14 +61,13 @@
             <tr>
                 <td>${status.count}</td>
                 <td>${car.make} ${car.model}</td>
-                ${car.model}
                 <td>${car.price}</td>
                 <td>${car.color}</td>
                 <td>${car.quantity}</td>
                 <td>
                 </td>
                 <td>
-                    <a href="/showroom?action=edit&id=${car.id}" class="btn btn-warning">edit</a>
+                    <a href="/showroom?action=edit&id=${car.id}" class="btn btn-warning">Sửa</a>
                     <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal${car.id}">
                         Xóa
                     </button>
@@ -91,7 +90,6 @@
                                         <button type="submit" class="btn btn-primary">Xác nhận</button>
                                         <input type="hidden" name="id" value="${car.id}">
                                     </form>
-
                                 </div>
                             </div>
                         </div>
