@@ -76,7 +76,7 @@
     <div id="main">
         <table class="table table-hover">
             <tr>
-                <th>${car.img}</th>
+                <th><img src="${pageContext.request.contextPath}/showroom/images/${car.img}"</th>
             </tr>
             <tr>
                 <th>${car.description}</th>
