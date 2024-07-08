@@ -57,4 +57,9 @@ public class CarService implements ICarService {
         return carRepository.findAllSaleDTO(startDate, endDate);
     }
 
+    @Override
+    public boolean checkLogin(String account, String password) {
+        return carRepository.checkLogin(account,password);
+    }
+
 }
