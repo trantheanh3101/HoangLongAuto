@@ -35,7 +35,7 @@
 <nav class="navbar navbar-expand-md navbar-light " style="background-color: #607D8B">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="${pageContext.request.contextPath}/showroom/images/LOGO.jpg" alt="LOGO" width="250px" height="100px">
+            <img src="${pageContext.request.contextPath}/showroom/images/logoHL2.png"  alt="LOGO" width="100px" height="100px">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -43,13 +43,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="showroom?action=home">Home</a>
+                    <a class="nav-link active" aria-current="page" href="showroom?action=home"><b>Home</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="showroom?action=list">List Product</a>
+                    <a class="nav-link" href="showroom?action=list"><b>List Product</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Contract</a>
+                    <a class="nav-link" href=""><b>Contract</b></a>
                 </li>
             </ul>
         </div>
@@ -105,21 +105,21 @@
                                 </a>
                             </div>
                             <table class="table table-hover">
-                                <h1>Thông tin xe</h1>
+                                <h1>Car Detail</h1>
                                 <tr>
-                                    <th>Tên Xe</th>
+                                    <th>Model</th>
                                     <td>${car.make} ${car.model}</td>
                                 </tr>
                                 <tr>
-                                    <th>Giá Bán</th>
+                                    <th>Price</th>
                                     <td>${car.price}</td>
                                 </tr>
                                 <tr>
-                                    <th>Màu Sơn</th>
+                                    <th>Paint Color</th>
                                     <td>${car.color}</td>
                                 </tr>
                                 <tr>
-                                    <th>Tồn Kho</th>
+                                    <th>Inventory</th>
                                     <td>${car.quantity}</td>
                                 </tr>
                             </table>
@@ -138,8 +138,8 @@
                 <hr />
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-6 text-center">
-                        <h4 class="my-4 h4">Tham khảo</h4>
-                        <p>Tham khảo</p>
+                        <h4 class="my-4 h4">Maybe you like</h4>
+
                     </div>
                 </div>
                 <div class="row">
