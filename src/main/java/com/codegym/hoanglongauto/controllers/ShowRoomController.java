@@ -73,7 +73,7 @@ public class ShowRoomController extends HttpServlet {
         long id = Long.parseLong(req.getParameter("id"));
         Car car = carService.findById(id);
         req.setAttribute("car", car);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("showroom/show_car.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("showroom/detailProduct.jsp");
         try {
             requestDispatcher.forward(req, resp);
         } catch (ServletException | IOException e) {
