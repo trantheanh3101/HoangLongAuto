@@ -33,7 +33,6 @@
                     <a class="nav-link" href="">Contract</a>
                 </li>
             </ul>
-
         </div>
     </div>
 </nav>
