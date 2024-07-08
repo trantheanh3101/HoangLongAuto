@@ -1,5 +1,6 @@
 package com.codegym.hoanglongauto.services.impl;
 
+import com.codegym.hoanglongauto.dto.SaleDTO;
 import com.codegym.hoanglongauto.models.Car;
 import com.codegym.hoanglongauto.repositories.ICarRepository;
 import com.codegym.hoanglongauto.repositories.impl.CarRepository;
@@ -49,6 +50,11 @@ public class CarService implements ICarService {
     @Override
     public void save(Car car) {
         carRepository.save(car);
+    }
+
+    @Override
+    public List<SaleDTO> findAllSaleDTO(String startDate, String endDate) {
+        return carRepository.findAllSaleDTO(startDate, endDate);
     }
 
 }

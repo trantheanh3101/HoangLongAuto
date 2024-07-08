@@ -1,5 +1,6 @@
 package com.codegym.hoanglongauto.controllers;
 
+import com.codegym.hoanglongauto.dto.SaleDTO;
 import com.codegym.hoanglongauto.models.Car;
 import com.codegym.hoanglongauto.services.ICarService;
 import com.codegym.hoanglongauto.services.impl.CarService;
@@ -37,6 +38,9 @@ public class ShowRoomController extends HttpServlet {
                 List<Car> cars = carService.findAll();
                 req.setAttribute("cars", cars);
                 req.getRequestDispatcher("/showroom/create.jsp").forward(req,resp);
+                break;
+            case "statistical":
+                showStatistical(req, resp);
                 break;
             default:
                 showHomeForm(req, resp);
@@ -107,6 +111,9 @@ public class ShowRoomController extends HttpServlet {
                 break;
             case "edit":
                 updateCar(req,resp);
+                break;
+            case "statistical":
+                checkSales(req, resp);
                 break;
         }
     }
@@ -193,5 +200,29 @@ public class ShowRoomController extends HttpServlet {
             dispatcher = req.getRequestDispatcher("/showroom/list.jsp");
         }
         dispatcher.forward(req, resp);
+    }
+
+    private void showStatistical(HttpServletRequest req, HttpServletResponse resp) {
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("showroom/statistical.jsp");
+        try {
+            requestDispatcher.forward(req, resp);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void checkSales(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+        String startDate = req.getParameter("startDate");
+        String endDate = req.getParameter("endDate");
+        List<SaleDTO> saleDTO = carService.findAllSaleDTO(startDate, endDate);
+        RequestDispatcher requestDispatcher;
+        if(saleDTO.isEmpty()) {
+            req.setAttribute("message", "ko tìm thấy sản phẩm");
+            requestDispatcher = req.getRequestDispatcher("/showroom/statistical.jsp");
+        }else{
+            req.setAttribute("saleDTO", saleDTO);
+            requestDispatcher = req.getRequestDispatcher("/showroom/statistical.jsp");
+        }
+        requestDispatcher.forward(req, resp);
     }
 }
