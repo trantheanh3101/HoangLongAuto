@@ -15,28 +15,55 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-light " style="background-color: #607D8B">
     <div class="container-fluid">
-        <a class="navbar-brand" href="showroom">Trang chủ</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#">
+            <img src="${pageContext.request.contextPath}/showroom/images/LOGO.jpg" alt="LOGO" width="250px" height="100px">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" onchange="navigateToPage(this)">
-                    <option selected>Chức năng</option>
-                    <option  value="1">Doanh Thu</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="showroom?action=home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="showroom?action=list">List Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Contract</a>
+                </li>
+            </ul>
         </div>
-        <form class="d-flex" action="showroom?action=search" method="post">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
-            <input type="hidden" name="action" value="search">
-            <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
-        </form>
+    </div>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-dark mt-3 mb-5 shadow p-2" style="background-color: #607D8B">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Products</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="#">All</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">New Cars</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Old Cars</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Sales Cars</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-info text-white" type="submit">Search</button>
+            </form>
+        </div>
     </div>
 </nav>
 <div class="container">
