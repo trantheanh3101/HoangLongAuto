@@ -42,10 +42,19 @@ public class ShowRoomController extends HttpServlet {
             case "statistical":
                 showStatistical(req, resp);
                 break;
+            case "showHome":
+                showHome(req, resp);
+                break;
             default:
                 showHomeForm(req, resp);
                 break;
         }
+    }
+
+    private void showHome(HttpServletRequest req, HttpServletResponse resp)  throws ServletException, IOException {
+        List<Car> cars = carService.findAll();
+        req.setAttribute("cars", cars);
+        req.getRequestDispatcher("/showroom/home.jsp").forward(req,resp);
     }
 
     private void showEditForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

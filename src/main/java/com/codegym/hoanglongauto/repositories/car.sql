@@ -1,3 +1,4 @@
+use manager;
 create table car
 (
     id               int auto_increment
@@ -16,6 +17,8 @@ create table car
     quantity         int          not null,
     used_car         bit          null
 );
+
+
 
 INSERT INTO manager.car (id, make, model, year, price, color, engine_type, horsepower, torque, seating_capacity, description, img, quantity, used_car) VALUES (1, 'Toyota', 'Vios', 2020, 24500, 'Blue', 'V6', 301, 267, 5, 'Comfortable midsize sedan', '2023-Toyota-Vios.jpg', 10, false);
 INSERT INTO manager.car (id, make, model, year, price, color, engine_type, horsepower, torque, seating_capacity, description, img, quantity, used_car) VALUES (2, 'BMW', 'X3', 2019, 22000, 'Red', 'I4', 158, 138, 5, 'Reliable compact car', 'BMW-x3.jpg', 15, true);
