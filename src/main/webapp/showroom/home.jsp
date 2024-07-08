@@ -70,7 +70,7 @@
             </div>
         </nav>
         <!-- Products -->
-        <section class="padding-large">
+            <section class="padding-large">
             <div class="text-center">
                 <div class="row">
                     <c:forEach var="car" items="${cars}">
@@ -84,7 +84,18 @@
                             </div>
                                 <div class="mask">
                                     <div class="d-flex justify-content-start align-items-end h-100">
-                                        <h5><span class="badge bg-dark ms-2">NEW</span></h5>
+                                        <h5>
+                                            <span class="badge bg-dark ms-2">
+                                                <c:choose>
+                                                    <c:when test="${car.used_car == 1}">
+                                                        NEW
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        OLD
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </span>
+                                        </h5>
                                     </div>
                                 </div>
                                 <div class="hover-overlay">
