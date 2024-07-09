@@ -43,7 +43,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="showroom?action=showHomeAdmin"><b>Home</b></a>
+                    <a class="nav-link active" aria-current="page" href="showroom?action=home"><b>Home</b></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="showroom?action=list"><b>List Product</b></a>
@@ -123,15 +123,19 @@
                                     <td>${car.quantity}</td>
                                 </tr>
                             </table>
-                            <form class="d-flex justify-content-left">
-                                <div class="form-outline me-1" style="width: 100px;">
-                                    <input type="number" value="1" class="form-control" />
-                                </div>
-                                <button class="btn btn-primary ms-1" type="submit">
-                                    Contact
-                                    <i class="fas fa-shopping-cart ms-1"></i>
-                                </button>
-                            </form>
+                            <div class="form-outline me-1" style="width: 100px;">
+                                <input type="number" value="1" class="form-control" />
+                            </div>
+                            <a href="/showroom?action=order&id=${car.id}" class="btn btn-primary ms-1">
+                                <i class="fas fa-shopping-cart ms-1"></i>Contact
+                                <%--                                <i class="bi bi-pencil-square"></i>--%>
+                            </a>
+                            <%--                            <form class="d-flex justify-content-left" action="showroom?action=order&id=${car.id}" method="post">--%>
+                            <%--                                <button class="btn btn-primary ms-1" type="submit">--%>
+                            <%--                                    Contact--%>
+                            <%--                                    <i class="fas fa-shopping-cart ms-1"></i>--%>
+                            <%--                                </button>--%>
+                            <%--                            </form>--%>
                         </div>
                     </div>
                 </div>
@@ -162,8 +166,8 @@
         <div class="row">
             <div class="col-lg-3 col-sm-6 pb-3">
                 <div class="footer-menu">
-                    <img src="${pageContext.request.contextPath}/showroom/images/logoHL2.png"  alt="LOGO" width="100px" height="100px">
-                    <p>Hoang Long Auto specializes in buying and selling luxury sedans, premium SUVs, Supercars... and is trusted by many influential individuals</p>
+                    <img src="${pageContext.request.contextPath}/showroom/images/LOGO.jpg" alt="logo" width="150px" height="150px">
+                    <p>Chào mừng đến với gara của chúng tôi</p>
                     <div class="social-links">
                         <ul class="d-flex list-unstyled">
                             <li>
@@ -252,7 +256,7 @@
             <div class="col-lg-3 col-sm-6 pb-3">
                 <div class="footer-menu contact-item">
                     <h5 class="widget-title text-uppercase pb-2">Contact Us</h5>
-                    <p>Do you have any queries or suggestions? <a href="mailto:yourinfo@gmail.com">yourinfo@gmail.com</a></p>
+                    <p>Do you have any queries or suggestions? <a href="#">yourinfo@gmail.com</a></p>
                     <p>If you need support? Just give us a call. <a href="">+55 111 222 333 44</a></p>
                 </div>
             </div>

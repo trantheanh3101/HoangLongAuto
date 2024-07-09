@@ -2,6 +2,7 @@ package com.codegym.hoanglongauto.services.impl;
 
 import com.codegym.hoanglongauto.dto.SaleDTO;
 import com.codegym.hoanglongauto.models.Car;
+import com.codegym.hoanglongauto.models.Customer;
 import com.codegym.hoanglongauto.repositories.ICarRepository;
 import com.codegym.hoanglongauto.repositories.impl.CarRepository;
 import com.codegym.hoanglongauto.services.ICarService;
@@ -70,6 +71,11 @@ public class CarService implements ICarService {
     @Override
     public List<Car> findByUsedCarAdmin(int i) {
         return carRepository.findByUsedCarAdmin(i);
+    }
+
+    @Override
+    public void saveOrder(long id, Customer customer) {
+        carRepository.saveOrder(id, customer);
     }
 
 }
