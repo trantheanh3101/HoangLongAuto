@@ -2,6 +2,7 @@ package com.codegym.hoanglongauto.services;
 
 import com.codegym.hoanglongauto.dto.SaleDTO;
 import com.codegym.hoanglongauto.models.Car;
+import com.codegym.hoanglongauto.models.Customer;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface ICarService {
     void save(Car car);
 
     List<SaleDTO> findAllSaleDTO(String startDate, String endDate);
+
+    void saveOrder(long id, Customer customer);
 }

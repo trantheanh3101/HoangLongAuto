@@ -2,11 +2,10 @@ package com.codegym.hoanglongauto.repositories.impl;
 
 import com.codegym.hoanglongauto.dto.SaleDTO;
 import com.codegym.hoanglongauto.models.Car;
+import com.codegym.hoanglongauto.models.Customer;
 import com.codegym.hoanglongauto.repositories.ICarRepository;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -225,5 +224,73 @@ public class CarRepository implements ICarRepository {
         }
         return saleDTO;
 
+    }
+
+    @Override
+    public void saveOrder(long id, Customer customer) {
+        Connection connection = null;
+        PreparedStatement customerStatement = null;
+        PreparedStatement orderStatement = null;
+
+        try {
+            connection = BaseRepository.getConnection();
+            connection.setAutoCommit(false); // Bắt đầu giao dịch
+
+            // Chèn khách hàng mới
+            String customerSql = "INSERT INTO customer (name, address, phone, email) VALUES (?, ?, ?, ?);";
+            customerStatement = connection.prepareStatement(customerSql, Statement.RETURN_GENERATED_KEYS);
+            customerStatement.setString(1, customer.getName());
+            customerStatement.setString(2, customer.getAddress());
+            customerStatement.setString(3, customer.getPhone());
+            customerStatement.setString(4, customer.getEmail());
+            customerStatement.executeUpdate();
+
+            // Lấy ID của khách hàng vừa được chèn
+            ResultSet generatedKeys = customerStatement.getGeneratedKeys();
+            long customerId = 0;
+            if (generatedKeys.next()) {
+                customerId = generatedKeys.getLong(1);
+            }
+
+            // Chèn đơn hàng mới cho khách hàng vừa chèn
+            String orderSql = "INSERT INTO oder (car_id, customer_id, sale_date) VALUES (?, ?, CURDATE());";
+            orderStatement = connection.prepareStatement(orderSql);
+            orderStatement.setLong(1, id);
+            orderStatement.setLong(2, customerId);
+            orderStatement.executeUpdate();
+
+            connection.commit(); // Hoàn tất giao dịch
+        } catch (SQLException e) {
+            if (connection != null) {
+                try {
+                    connection.rollback(); // Rollback nếu có lỗi xảy ra
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            throw new RuntimeException(e);
+        } finally {
+            if (customerStatement != null) {
+                try {
+                    customerStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (orderStatement != null) {
+                try {
+                    orderStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.setAutoCommit(true); // Đặt lại AutoCommit về true
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

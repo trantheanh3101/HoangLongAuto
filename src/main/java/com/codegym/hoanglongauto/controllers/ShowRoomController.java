@@ -2,6 +2,7 @@ package com.codegym.hoanglongauto.controllers;
 
 import com.codegym.hoanglongauto.dto.SaleDTO;
 import com.codegym.hoanglongauto.models.Car;
+import com.codegym.hoanglongauto.models.Customer;
 import com.codegym.hoanglongauto.services.ICarService;
 import com.codegym.hoanglongauto.services.impl.CarService;
 
@@ -45,9 +46,24 @@ public class ShowRoomController extends HttpServlet {
             case "showHome":
                 showHome(req, resp);
                 break;
+            case "order":
+                showOrderForm(req, resp);
+                break;
             default:
                 showHomeForm(req, resp);
                 break;
+        }
+    }
+
+    private void showOrderForm(HttpServletRequest req, HttpServletResponse resp){
+        long id = Long.parseLong(req.getParameter("id"));
+        Car car = carService.findById(id);
+        req.setAttribute("car", car);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/showroom/order.jsp");
+        try {
+            requestDispatcher.forward(req, resp);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -124,7 +140,25 @@ public class ShowRoomController extends HttpServlet {
             case "statistical":
                 checkSales(req, resp);
                 break;
+            case "order":
+                orderCar(req, resp);
+                break;
         }
+    }
+
+    private void orderCar(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+        long id = Long.parseLong(req.getParameter("id"));
+        String name = req.getParameter("name");
+        String address = req.getParameter("address");
+        String phone = req.getParameter("phoneNumber");
+        String email = req.getParameter("email");
+        Customer customer = new Customer(name, address, phone, email);
+        carService.saveOrder(id, customer);
+        Car car = carService.findById(id);
+        req.setAttribute("car", car);
+        req.setAttribute("customer", customer);
+        req.setAttribute("message", "Thank you for providing your information, we will contact you as soon as possible.");
+        req.getRequestDispatcher("/showroom/order.jsp").forward(req, resp);
     }
 
     private void createCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

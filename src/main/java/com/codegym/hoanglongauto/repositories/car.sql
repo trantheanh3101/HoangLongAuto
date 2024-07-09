@@ -51,9 +51,16 @@ INSERT INTO manager.car (id, make, model, year, price, color, engine_type, horse
 
 SHOW CREATE TABLE `oder`;
 
-ALTER TABLE `oder` DROP FOREIGN KEY `oder_ibfk_1`;
+ALTER TABLE `oder` DROP FOREIGN KEY `oder_ibfk_3`;
 
 ALTER TABLE `oder` ADD CONSTRAINT `oder_ibfk_1` FOREIGN KEY (`car_id`) REFERENCES `car` (`id`);
 
+alter table oder drop column employee_id;
 
+insert into  customer (name, address, phone, email) value
+(? , ?, ?, ?);
 
+select customer.id from customer where name = ? and address = ? and phone=? and email = ?;
+
+insert into oder(car_id, customer_id, sale_date) value
+(1, 5, CURDATE());

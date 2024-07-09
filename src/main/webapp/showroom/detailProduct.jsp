@@ -123,15 +123,19 @@
                                     <td>${car.quantity}</td>
                                 </tr>
                             </table>
-                            <form class="d-flex justify-content-left">
                                 <div class="form-outline me-1" style="width: 100px;">
                                     <input type="number" value="1" class="form-control" />
                                 </div>
-                                <button class="btn btn-primary ms-1" type="submit">
-                                    Contact
-                                    <i class="fas fa-shopping-cart ms-1"></i>
-                                </button>
-                            </form>
+                            <a href="/showroom?action=order&id=${car.id}" class="btn btn-primary ms-1">
+                                <i class="fas fa-shopping-cart ms-1"></i>Contact
+<%--                                <i class="bi bi-pencil-square"></i>--%>
+                            </a>
+<%--                            <form class="d-flex justify-content-left" action="showroom?action=order&id=${car.id}" method="post">--%>
+<%--                                <button class="btn btn-primary ms-1" type="submit">--%>
+<%--                                    Contact--%>
+<%--                                    <i class="fas fa-shopping-cart ms-1"></i>--%>
+<%--                                </button>--%>
+<%--                            </form>--%>
                         </div>
                     </div>
                 </div>
@@ -252,7 +256,7 @@
             <div class="col-lg-3 col-sm-6 pb-3">
                 <div class="footer-menu contact-item">
                     <h5 class="widget-title text-uppercase pb-2">Contact Us</h5>
-                    <p>Do you have any queries or suggestions? <a href="mailto:yourinfo@gmail.com">yourinfo@gmail.com</a></p>
+                    <p>Do you have any queries or suggestions? <a href="#">yourinfo@gmail.com</a></p>
                     <p>If you need support? Just give us a call. <a href="">+55 111 222 333 44</a></p>
                 </div>
             </div>
