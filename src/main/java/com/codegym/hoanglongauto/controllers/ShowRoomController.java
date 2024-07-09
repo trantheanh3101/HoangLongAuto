@@ -45,11 +45,66 @@ public class ShowRoomController extends HttpServlet {
             case "showHomeAdmin":
                 showHomeFormAdmin(req, resp);
                 break;
+            case "filterUser":
+                filterCarsUser(req, resp);
+                break;
+            case "filterAdmin":
+                filterCarsAdmin(req, resp);
+                break;
             default:
                 showHomeFormUser(req, resp);
                 break;
         }
     }
+
+    private void filterCarsAdmin(HttpServletRequest req, HttpServletResponse resp) {
+        String type = req.getParameter("type");
+        List<Car> filteredCars;
+        switch (type) {
+            case "new":
+                filteredCars = carService.findByUsedCarAdmin(1);
+                break;
+            case "old":
+                filteredCars = carService.findByUsedCarAdmin(0);
+                break;
+            default:
+                filteredCars = carService.findAll();
+                break;
+        }
+        req.setAttribute("cars", filteredCars);
+        try {
+            req.getRequestDispatcher("/showroom/homeAdmin.jsp").forward(req, resp);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void filterCarsUser(HttpServletRequest req, HttpServletResponse resp) {
+        String type = req.getParameter("type");
+        List<Car> filteredCars;
+        switch (type) {
+            case "new":
+                filteredCars = carService.findByUsedCarUser(1);
+                break;
+            case "old":
+                filteredCars = carService.findByUsedCarUser(0);
+                break;
+            default:
+                filteredCars = carService.findAll();
+                break;
+        }
+        req.setAttribute("cars", filteredCars);
+        try {
+            req.getRequestDispatcher("/showroom/homeUser.jsp").forward(req, resp);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private void showHomeFormUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Car> carDTO = carService.findAll();
         req.setAttribute("cars", carDTO);
@@ -120,6 +175,12 @@ public class ShowRoomController extends HttpServlet {
             case "search":
                 searchByModel(req, resp);
                 break;
+            case "searchHomeUser":
+                searchByModelHomeUser(req, resp);
+                break;
+            case "searchHomeAdmin":
+                searchByModelHomeAdmin(req, resp);
+                break;
             case "delete":
                 deleteCar(req, resp);
                 break;
@@ -133,6 +194,34 @@ public class ShowRoomController extends HttpServlet {
                 checkSales(req, resp);
                 break;
         }
+    }
+
+    private void searchByModelHomeAdmin(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException  {
+        String model = req.getParameter("searchHomeAdmin");
+        List<Car> result = carService.searchByModel(model);
+        RequestDispatcher dispatcher;
+        if (result.isEmpty()) {
+            req.setAttribute("message", "ko tìm thấy sản phẩm bạn tìm");
+            dispatcher = req.getRequestDispatcher("showroom/homeAdmin.jsp");
+        } else {
+            req.setAttribute("cars", result);
+            dispatcher = req.getRequestDispatcher("/showroom/homeAdmin.jsp");
+        }
+        dispatcher.forward(req, resp);
+    }
+
+    private void searchByModelHomeUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String model = req.getParameter("searchHomeUser");
+        List<Car> result = carService.searchByModel(model);
+        RequestDispatcher dispatcher;
+        if (result.isEmpty()) {
+            req.setAttribute("message", "ko tìm thấy sản phẩm bạn tìm");
+            dispatcher = req.getRequestDispatcher("showroom/homeUser.jsp");
+        } else {
+            req.setAttribute("cars", result);
+            dispatcher = req.getRequestDispatcher("/showroom/homeUser.jsp");
+        }
+        dispatcher.forward(req, resp);
     }
 
     private void loginAdmin(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

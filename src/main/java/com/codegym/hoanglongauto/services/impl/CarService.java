@@ -62,4 +62,14 @@ public class CarService implements ICarService {
         return carRepository.checkLogin(account,password);
     }
 
+    @Override
+    public List<Car> findByUsedCarUser(int i) {
+        return carRepository.findByUsedCarUser(i);
+    }
+
+    @Override
+    public List<Car> findByUsedCarAdmin(int i) {
+        return carRepository.findByUsedCarAdmin(i);
+    }
+
 }

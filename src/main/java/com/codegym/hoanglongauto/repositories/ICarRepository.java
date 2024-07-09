@@ -22,4 +22,8 @@ public interface ICarRepository {
     List<SaleDTO> findAllSaleDTO(String startDate, String endDate);
 
     boolean checkLogin(String account, String password);
+
+    List<Car> findByUsedCarUser(int i);
+
+    List<Car> findByUsedCarAdmin(int i);
 }
