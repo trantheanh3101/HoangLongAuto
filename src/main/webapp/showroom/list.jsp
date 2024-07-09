@@ -43,9 +43,9 @@
         <form class="d-flex" action="showroom?action=search" method="post">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
             <input type="hidden" name="action" value="search">
-            <a class="btn btn-outline-dark" type="submit">
+            <button class="btn btn-outline-dark" type="submit">
                 <i class="bi bi-search"></i>
-            </a>
+            </button>
         </form>
     </div>
 </nav>

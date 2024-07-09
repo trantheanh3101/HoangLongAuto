@@ -51,20 +51,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent2">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item active">
-                            <a class="nav-link text-white" href="#">All</a>
+                            <a class="nav-link text-white" href="showroom?action=filterAdmin&type=all">All</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">New Cars</a>
+                            <a class="nav-link text-white" href="showroom?action=filterAdmin&type=new">New Cars</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Old Cars</a>
+                            <a class="nav-link text-white" href="showroom?action=filterAdmin&type=old">Old Cars</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#">Sales Cars</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search">
+                    <form class="d-flex" method="post" action="showroom?action=searchHomeAdmin">
+                        <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search" id="searchHomeAdmin" name="searchHomeAdmin">
                         <button class="btn btn-outline-info text-white" type="submit">Search</button>
                     </form>
                 </div>
@@ -88,12 +88,8 @@
                                         <h5>
                                             <span class="badge bg-dark ms-2">
                                                 <c:choose>
-                                                    <c:when test="${car.used_car == 1}">
-                                                        NEW
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        OLD
-                                                    </c:otherwise>
+                                                    <c:when test="${car.used_car == 1}">NEW</c:when>
+                                                    <c:otherwise>OLD</c:otherwise>
                                                 </c:choose>
                                             </span>
                                         </h5>
@@ -111,201 +107,51 @@
                                 <h6 class="mb-3 price">${car.price}</h6>
                             </div>
                         </div>
-            </c:forEach>
-            <%--                    <div class="col-lg-3 col-md-6 mb-4">--%>
-            <%--                        <div class="card">--%>
-            <%--                            <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">--%>
-            <%--                                <a href="images/HondaBRV2023.jpg">--%>
-            <%--                                    <img src="${pageContext.request.contextPath}/showroom/images/HondaBRV2023.jpg" alt="HondaBRV2023.jpg" class="img-fluid">--%>
-            <%--                                    <div class="mask">--%>
-            <%--                                        <div class="d-flex justify-content-start align-items-end h-100">--%>
-            <%--                                            <h5><span class="badge bg-dark ms-2">NEW</span></h5>--%>
-            <%--                                        </div>--%>
-            <%--                                    </div>--%>
-            <%--                                    <div class="hover-overlay">--%>
-            <%--                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>--%>
-            <%--                                    </div>--%>
-            <%--                                </a>--%>
-            <%--                            </div>--%>
-            <%--                            <div class="card-body">--%>
-            <%--                                <a href="images/HondaBRV2023.jpg" class="text-reset">--%>
-            <%--                                    <h5 class="card-title mb-2">HondaBRV2023.jpg</h5>--%>
-            <%--                                </a>--%>
-            <%--                                <h6 class="mb-3 price">120$</h6>--%>
-            <%--                            </div>--%>
-            <%--                        </div>--%>
-            <%--                    </div>--%>
+                    </c:forEach>
+                </div>
+            </div>
+        </section>
 
-            <%--                    <div class="col-lg-3 col-md-6 mb-4">--%>
-            <%--                        <div class="card">--%>
-            <%--                            <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">--%>
-            <%--                                <a href="images/2023-Toyota-Vios.jpg">--%>
-            <%--                                    <img src="${pageContext.request.contextPath}/showroom/images/2023-Toyota-Vios.jpg" alt="Toyota-Vios" class="img-fluid">--%>
-            <%--                                    <div class="mask">--%>
-            <%--                                        <div class="d-flex justify-content-start align-items-end h-100">--%>
-            <%--                                            <h5><span class="badge bg-dark ms-2">NEW</span></h5>--%>
-            <%--                                        </div>--%>
-            <%--                                    </div>--%>
-            <%--                                    <div class="hover-overlay">--%>
-            <%--                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>--%>
-            <%--                                    </div>--%>
-            <%--                                </a>--%>
-            <%--                            </div>--%>
-            <%--                            <div class="card-body">--%>
-            <%--                                <a href="images/2023-Toyota-Vios.jpg" class="text-reset">--%>
-            <%--                                    <h5 class="card-title mb-2">2023-Toyota-Vios</h5>--%>
-            <%--                                </a>--%>
-            <%--                                <h6 class="mb-3 price">120$</h6>--%>
-            <%--                            </div>--%>
-            <%--                        </div>--%>
-            <%--                    </div>--%>
-
-            <%--                    <div class="col-lg-3 col-md-6 mb-4">--%>
-            <%--                        <div class="card">--%>
-            <%--                            <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">--%>
-            <%--                                <a href="images/BMW-x3.jpg">--%>
-            <%--                                    <img src="${pageContext.request.contextPath}/showroom/images/BMW-x3.jpg" alt="BMW-x3" class="img-fluid">--%>
-            <%--                                    <div class="mask">--%>
-            <%--                                        <div class="d-flex justify-content-start align-items-end h-100">--%>
-            <%--                                            <h5><span class="badge bg-dark ms-2">OLD</span></h5>--%>
-            <%--                                        </div>--%>
-            <%--                                    </div>--%>
-            <%--                                    <div class="hover-overlay">--%>
-            <%--                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>--%>
-            <%--                                    </div>--%>
-            <%--                                </a>--%>
-            <%--                            </div>--%>
-            <%--                            <div class="card-body">--%>
-            <%--                                <a href="images/BMW-x3.jpg" class="text-reset">--%>
-            <%--                                    <h5 class="card-title mb-2">BMW-x3</h5>--%>
-            <%--                                </a>--%>
-            <%--                                <h6 class="mb-3 price">120$</h6>--%>
-            <%--                            </div>--%>
-            <%--                        </div>--%>
-            <%--                    </div>--%>
-
-            <%--                    <div class="col-lg-3 col-md-6 mb-4">--%>
-            <%--                        <div class="card">--%>
-            <%--                            <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">--%>
-            <%--                                <a href="images/EverestPlatinum.jpg">--%>
-            <%--                                    <img src="${pageContext.request.contextPath}/showroom/images/EverestPlatinum.jpg" alt="EverestPlatinum" class="img-fluid">--%>
-            <%--                                    <div class="mask">--%>
-            <%--                                        <div class="d-flex justify-content-start align-items-end h-100">--%>
-            <%--                                            <h5><span class="badge bg-dark ms-2">NEW</span></h5>--%>
-            <%--                                        </div>--%>
-            <%--                                    </div>--%>
-            <%--                                    <div class="hover-overlay">--%>
-            <%--                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>--%>
-            <%--                                    </div>--%>
-            <%--                                </a>--%>
-            <%--                            </div>--%>
-            <%--                            <div class="card-body">--%>
-            <%--                                <a href="images/EverestPlatinum.jpg" class="text-reset">--%>
-            <%--                                    <h5 class="card-title mb-2">EverestPlatinum</h5>--%>
-            <%--                                </a>--%>
-            <%--                                <h6 class="mb-3 price">120$</h6>--%>
-            <%--                            </div>--%>
-            <%--                        </div>--%>
-            <%--                    </div>--%>
-
-            <%--                    <div class="col-lg-3 col-md-6 mb-4">--%>
-            <%--                        <div class="card">--%>
-            <%--                            <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">--%>
-            <%--                                <a href="images/Ford_Ranger.jpg">--%>
-            <%--                                    <img src="${pageContext.request.contextPath}/showroom/images/Ford_Ranger.jpg" alt="Ford_Ranger" class="img-fluid">--%>
-            <%--                                    <div class="mask">--%>
-            <%--                                        <div class="d-flex justify-content-start align-items-end h-100">--%>
-            <%--                                            <h5><span class="badge bg-dark ms-2">OLD</span></h5>--%>
-            <%--                                        </div>--%>
-            <%--                                    </div>--%>
-            <%--                                    <div class="hover-overlay">--%>
-            <%--                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>--%>
-            <%--                                    </div>--%>
-            <%--                                </a>--%>
-            <%--                            </div>--%>
-            <%--                            <div class="card-body">--%>
-            <%--                                <a href="images/Ford_Ranger.jpg" class="text-reset">--%>
-            <%--                                    <h5 class="card-title mb-2">Ford_Ranger</h5>--%>
-            <%--                                </a>--%>
-            <%--                                <h6 class="mb-3 price">120$</h6>--%>
-            <%--                            </div>--%>
-            <%--                        </div>--%>
-            <%--                    </div>--%>
-
-            <%--                    <div class="col-lg-3 col-md-6 mb-4">--%>
-            <%--                        <div class="card">--%>
-            <%--                            <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">--%>
-            <%--                                <a href="images/Ford_Territory.jpg">--%>
-            <%--                                    <img src="${pageContext.request.contextPath}/showroom/images/Ford_Territory.jpg" alt="Ford_Territory" class="img-fluid">--%>
-            <%--                                    <div class="mask">--%>
-            <%--                                        <div class="d-flex justify-content-start align-items-end h-100">--%>
-            <%--                                            <h5><span class="badge bg-dark ms-2">NEW</span></h5>--%>
-            <%--                                        </div>--%>
-            <%--                                    </div>--%>
-            <%--                                    <div class="hover-overlay">--%>
-            <%--                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>--%>
-            <%--                                    </div>--%>
-            <%--                                </a>--%>
-            <%--                            </div>--%>
-            <%--                            <div class="card-body">--%>
-            <%--                                <a href="images/Ford_Territory.jpg" class="text-reset">--%>
-            <%--                                    <h5 class="card-title mb-2">Ford_Territory</h5>--%>
-            <%--                                </a>--%>
-            <%--                                <h6 class="mb-3 price">120$</h6>--%>
-            <%--                            </div>--%>
-            <%--                        </div>--%>
-            <%--                    </div>--%>
-
-            <%--                    <div class="col-lg-3 col-md-6 mb-4">--%>
-            <%--                        <div class="card">--%>
-            <%--                            <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">--%>
-            <%--                                <a href="images/Honda_civic_2022.jpg">--%>
-            <%--                                    <img src="${pageContext.request.contextPath}/showroom/images/Honda_civic_2022.jpg" alt="Honda_civic_2022" class="img-fluid">--%>
-            <%--                                    <div class="mask">--%>
-            <%--                                        <div class="d-flex justify-content-start align-items-end h-100">--%>
-            <%--                                            <h5><span class="badge bg-dark ms-2">NEW</span></h5>--%>
-            <%--                                        </div>--%>
-            <%--                                    </div>--%>
-            <%--                                    <div class="hover-overlay">--%>
-            <%--                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>--%>
-            <%--                                    </div>--%>
-            <%--                                </a>--%>
-            <%--                            </div>--%>
-            <%--                            <div class="card-body">--%>
-            <%--                                <a href="images/Honda_civic_2022.jpg" class="text-reset">--%>
-            <%--                                    <h5 class="card-title mb-2">Honda_civic_2022</h5>--%>
-            <%--                                </a>--%>
-            <%--                                <h6 class="mb-3 price">120$</h6>--%>
-            <%--                            </div>--%>
-            <%--                        </div>--%>
-            <%--                    </div>--%>
-
-            <%--                    <div class="col-lg-3 col-md-6 mb-4">--%>
-            <%--                        <div class="card">--%>
-            <%--                            <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light" data-mdb-ripple-color="light">--%>
-            <%--                                <a href="images/Nissan-Terra-2023.jpg">--%>
-            <%--                                    <img src="${pageContext.request.contextPath}/showroom/images/Nissan-Terra-2023.jpg" alt="Nissan-Terra-2023" class="img-fluid">--%>
-            <%--                                    <div class="mask">--%>
-            <%--                                        <div class="d-flex justify-content-start align-items-end h-100">--%>
-            <%--                                            <h5><span class="badge bg-dark ms-2">NEW</span></h5>--%>
-            <%--                                        </div>--%>
-            <%--                                    </div>--%>
-            <%--                                    <div class="hover-overlay">--%>
-            <%--                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>--%>
-            <%--                                    </div>--%>
-            <%--                                </a>--%>
-            <%--                            </div>--%>
-            <%--                            <div class="card-body">--%>
-            <%--                                <a href="images/2023-Toyota-Vios.jpg" class="text-reset">--%>
-            <%--                                    <h5 class="card-title mb-2">Nissan-Terra-2023</h5>--%>
-            <%--                                </a>--%>
-            <%--                                <h6 class="mb-3 price">120$</h6>--%>
-            <%--                            </div>--%>
-            <%--                        </div>--%>
-            <%--                    </div>--%>
-    </div>
-    </div>
-    </section>
+        <section class="padding-large">
+            <div class="text-center">
+                <div class="row">
+                    <c:forEach var="car" items="${cars}">
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="card">
+                                <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                     data-mdb-ripple-color="light">
+                                    <a href="/showroom?action=show_car&id=${car.id}">
+                                        <img src="${pageContext.request.contextPath}/showroom/images/${car.img}" alt="${car.img}">
+                                    </a>
+                                </div>
+                                <div class="mask">
+                                    <div class="d-flex justify-content-start align-items-end h-100">
+                                        <h5>
+                                            <span class="badge bg-dark ms-2">
+                                                <c:choose>
+                                                    <c:when test="${car.used_car == 1}">NEW</c:when>
+                                                    <c:otherwise>OLD</c:otherwise>
+                                                </c:choose>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="hover-overlay">
+                                    <div class="mask"
+                                         style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <a href="images/Honda-Wr-V.jpg" class="text-reset">
+                                    <h5 class="card-title mb-2">${car.make} ${car.model}</h5>
+                                </a>
+                                <h6 class="mb-3 price">${car.price}</h6>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
+        </section>
     </div>
 </main>
 <footer id="footer" class="overflow-hidden">
