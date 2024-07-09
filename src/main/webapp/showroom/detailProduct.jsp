@@ -162,8 +162,8 @@
         <div class="row">
             <div class="col-lg-3 col-sm-6 pb-3">
                 <div class="footer-menu">
-                    <img src="${pageContext.request.contextPath}/showroom/images/LOGO.jpg" alt="logo" width="150px" height="150px">
-                    <p>Chào mừng đến với gara của chúng tôi</p>
+                    <img src="${pageContext.request.contextPath}/showroom/images/logoHL2.png"  alt="LOGO" width="100px" height="100px">
+                    <p>Hoang Long Auto specializes in buying and selling luxury sedans, premium SUVs, Supercars... and is trusted by many influential individuals</p>
                     <div class="social-links">
                         <ul class="d-flex list-unstyled">
                             <li>
